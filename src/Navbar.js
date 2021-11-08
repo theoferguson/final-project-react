@@ -8,9 +8,8 @@ function Navbar({ onLogout }) {
     return (
         <header>
             <button onClick={handleLogout}>Logout</button>
-            <div className="App">
-                <h1>Page Count: {count}</h1>
-            </div>
         </header>
     );
 }
+
+export default Navbar;

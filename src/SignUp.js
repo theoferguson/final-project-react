@@ -7,6 +7,7 @@ function SignUp({ onLogin }) {
 
     function handleSubmit(e) {
         e.preventDefault();
+
         fetch("/signup", {
             method: "POST",
             headers: {
@@ -19,7 +20,7 @@ function SignUp({ onLogin }) {
             }),
         })
             .then((r) => r.json())
-            .then(onLogin);
+            .then((user) => onLogin(user));
     }
 
     return (
@@ -50,3 +51,5 @@ function SignUp({ onLogin }) {
     );
 
 }
+
+export default SignUp;

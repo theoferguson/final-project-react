@@ -1,11 +1,10 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import Login from 'Login';
-import Navbar from 'Navbar';
-import SignUp from 'SignUp';
+import Login from './Login';
+import Navbar from './Navbar';
+import SignUp from './SignUp';
 
 function App() {
-  const [count, setCount] = useState(0);
   const [user, setUser] = useState(null);
   const [issueRequest, setIssueRequest] = useState(false)
 
@@ -17,23 +16,25 @@ function App() {
     });
   }, [issueRequest]);
 
+  function onLogin(user) {
+    if (user.username) {
+      setUser(user)
+    }
+  }
 
-
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
+  function onLogout() {
+    setUser(null)
+  }
 
   if (user) {
     return (
-      <Navbar onLogout={setUser} />
+      <Navbar onLogout={onLogout} />
     );
   } else {
     return (
       <>
-        <Login onLogin={setUser} />
-        <SignUp onLogin={setUser} />
+        <Login onLogin={onLogin} />
+        <SignUp onLogin={onLogin} />
       </>
     );
   }
