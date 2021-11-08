@@ -7,6 +7,9 @@ function Navbar({ onLogout }) {
 
     return (
         <header>
+            <div>user page</div>
+            <div>marketplace</div>
+            <div>about us</div>
             <button onClick={handleLogout}>Logout</button>
         </header>
     );

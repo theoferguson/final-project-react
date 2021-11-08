@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Login from './Login';
 import Navbar from './Navbar';
 import SignUp from './SignUp';
+import UserPage from './UserPage';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -19,22 +20,37 @@ function App() {
   function onLogin(user) {
     if (user.username) {
       setUser(user)
+      setIssueRequest(!issueRequest)
+    } else {
+      console.log(user)
     }
-  }
+  };
+
+  function onSignUp(user) {
+    if (user.username) {
+      setUser(user)
+      setIssueRequest(!issueRequest)
+    } else {
+      console.log(user)
+    }
+  };
 
   function onLogout() {
     setUser(null)
-  }
+  };
 
   if (user) {
     return (
-      <Navbar onLogout={onLogout} />
+      <>
+        <Navbar onLogout={onLogout} />
+        <UserPage />
+      </>
     );
   } else {
     return (
       <>
         <Login onLogin={onLogin} />
-        <SignUp onLogin={onLogin} />
+        <SignUp onSignUp={onSignUp} />
       </>
     );
   }
