@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 import Login from './Login';
 import Navbar from './Navbar';
 import SignUp from './SignUp';
-import UserPage from './UserPage';
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState(null);
   const [issueRequest, setIssueRequest] = useState(false)
+  const [marketplace, setMarketplace] = useState([])
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -41,10 +42,15 @@ function App() {
 
   if (user) {
     return (
-      <>
-        <Navbar onLogout={onLogout} />
-        <UserPage />
-      </>
+      <Router>
+        <Navbar 
+        onLogout={onLogout} 
+        user={user} 
+        setUser={setUser} 
+        marketplace={marketplace} 
+        setMarketplace={setMarketplace} 
+        />
+      </Router>
     );
   } else {
     return (

@@ -2,14 +2,14 @@ import MyOfferings from './MyOfferings';
 import Settings from './Settings';
 import MyData from './MyData';
 
-function UserPage() {
+function UserPage({ user, setUser, marketplace, setMarketplace }) {
 
     return (
-        <p>
-            <Settings />
+        <div>
+            <Settings user={user} setUser={setUser} />
             <MyData />
-            <MyOfferings />
-        </p>
+            <MyOfferings user={user} marketplace={marketplace} setMarketplace={setMarketplace} />
+        </div>
     )
 };
 
