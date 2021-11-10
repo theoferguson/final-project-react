@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 
-function OfferingCard({ offering, marketplace }) {
+function OfferingCard({ offering, marketplace, user }) {
 
 
     function handlePost() {
@@ -22,7 +22,7 @@ function OfferingCard({ offering, marketplace }) {
 
 
     function posted() {
-        if (marketplace.find((post) => post.offering.id === offering.id)) {
+        if (user.id === offering.user.id) {
             return (
                 <div>Posted to marketplace</div>
             )

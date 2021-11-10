@@ -109,7 +109,7 @@ function MyOfferings({ user, marketplace }) {
             <div>Your offerings
                 {allOfferings.map((offering) => {
                     return (
-                        <OfferingCard key={offering.id} offering={offering} marketplace={marketplace} />
+                        <OfferingCard key={offering.id} offering={offering} marketplace={marketplace} user={user} />
                     )
                 })}
             </div>
