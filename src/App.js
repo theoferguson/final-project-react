@@ -18,6 +18,14 @@ function App() {
     });
   }, [issueRequest]);
 
+  useEffect(() => {
+    fetch("/posts")
+        .then((r) => r.json())
+        .then((json) => {
+            setMarketplace(json)
+        })
+}, [issueRequest]);
+
   function onLogin(user) {
     if (user.username) {
       setUser(user)
@@ -48,7 +56,8 @@ function App() {
         user={user} 
         setUser={setUser} 
         marketplace={marketplace} 
-        setMarketplace={setMarketplace} 
+        issueRequest={issueRequest} 
+        setIssueRequest={setIssueRequest}
         />
       </Router>
     );

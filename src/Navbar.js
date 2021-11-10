@@ -6,8 +6,10 @@ import {
 import AboutUs from "./AboutUs";
 import Marketplace from "./Marketplace";
 import UserPage from "./UserPage";
+import { useEffect } from 'react';
 
-function Navbar({ onLogout, user, setUser, marketplace, setMarketplace }) {
+function Navbar({ onLogout, user, setUser, marketplace, setIssueRequest, issueRequest }) {
+    
     function handleLogout() {
         fetch("/logout", {
             method: "DELETE",
@@ -26,8 +28,8 @@ function Navbar({ onLogout, user, setUser, marketplace, setMarketplace }) {
             </header>
             <Routes>
                 <Route path="/about" element={<AboutUs />} />
-                <Route path="/marketplace" element={<Marketplace marketplace={marketplace} setMarketplace={setMarketplace} />} />
-                <Route path="/userpage" element={<UserPage user={user} setUser={setUser} marketplace={marketplace} />} />
+                <Route path="/marketplace" element={<Marketplace marketplace={marketplace} user={user} />} />
+                <Route path="/userpage" element={<UserPage user={user} setUser={setUser} marketplace={marketplace} issueRequest={issueRequest} setIssueRequest={setIssueRequest} />} />
                 <Route path="/" element={<UserPage user={user} setUser={setUser} marketplace={marketplace} />} />
             </Routes>
         </>

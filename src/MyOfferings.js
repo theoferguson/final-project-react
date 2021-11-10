@@ -3,18 +3,18 @@ import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react';
 import OfferingCard from './OfferingCard';
 
-function MyOfferings({ user, marketplace }) {
+function MyOfferings({ user, marketplace, setUser, issueRequest, setIssueRequest }) {
     const [show, setShow] = useState(false);
     const [offering, setOffering] = useState({});
     const [allOfferings, setAllOfferings] = useState(user.offerings);
 
     useEffect(() => {
         fetch("/me/offerings").then((response) => {
-          if (response.ok) {
-            response.json().then((offerings) => setAllOfferings(offerings));
-          }
+            if (response.ok) {
+                response.json().then((offerings) => setAllOfferings(offerings));
+            }
         });
-      }, []);
+    }, [issueRequest]);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -35,6 +35,7 @@ function MyOfferings({ user, marketplace }) {
                 console.log(json)
                 setOffering({})
                 setShow(false)
+                setIssueRequest(!issueRequest)
             })
     };
 
@@ -106,10 +107,19 @@ function MyOfferings({ user, marketplace }) {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <div>Your offerings
+            <div>
+                <h3>Your offerings</h3>
                 {allOfferings.map((offering) => {
                     return (
-                        <OfferingCard key={offering.id} offering={offering} marketplace={marketplace} user={user} />
+                        <OfferingCard
+                            key={offering.id}
+                            offering={offering}
+                            marketplace={marketplace}
+                            user={user}
+                            setUser={setUser}
+                            issueRequest={issueRequest}
+                            setIssueRequest={setIssueRequest}
+                        />
                     )
                 })}
             </div>

@@ -3,7 +3,7 @@ import Filter from "./Filter";
 import Listings from "./Listings";
 import NewsScroll from "./NewsScroll";
 
-function Marketplace({marketplace, setMarketplace}) {
+function Marketplace({marketplace, user }) {
 
     return (
         <>
@@ -13,7 +13,7 @@ function Marketplace({marketplace, setMarketplace}) {
             <div>
                 <Categories />
                 <Filter />
-                <Listings marketplace={marketplace} setMarketplace={setMarketplace} />
+                <Listings marketplace={marketplace} user={user} />
             </div>
         </>
     )

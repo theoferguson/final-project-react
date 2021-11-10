@@ -1,6 +1,6 @@
-import { useEffect } from "react"
 
-function OfferingCard({ offering, marketplace, user }) {
+
+function OfferingCard({ offering, marketplace, issueRequest, setIssueRequest }) {
 
 
     function handlePost() {
@@ -17,14 +17,25 @@ function OfferingCard({ offering, marketplace, user }) {
             .then((r) => r.json())
             .then((json) => {
                 console.log(json)
+                setIssueRequest(!issueRequest)
             })
+    };
+
+    function handleRemovePost() {
+        const removePost = marketplace.find((post) => post.offering.id === offering.id)
+        console.log(removePost.id)
+        fetch(`/posts/${removePost.id}`, {
+            method: 'DELETE'
+        }).then(setIssueRequest(!issueRequest))
     };
 
 
     function posted() {
-        if (user.id === offering.user.id) {
+        if (marketplace.some((post) => post.offering.id === offering.id)) {
             return (
-                <div>Posted to marketplace</div>
+                <>
+                    <div>Posted to marketplace</div><button className="post_button" onClick={handleRemovePost} >Remove from marketplace</button>
+                </>
             )
         } else if (offering.user.email) {
             return (
