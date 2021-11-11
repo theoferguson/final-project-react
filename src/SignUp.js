@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 function SignUp({ onSignUp }) {
     const [username, setUsername] = useState("");
@@ -24,30 +25,45 @@ function SignUp({ onSignUp }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username:</label>
-            <input
-                type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-            />
-            <label htmlFor="password">Password:</label>
-            <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <label htmlFor="password_confirmation">Confirm Password:</label>
-            <input
-                type="password"
-                id="password_confirmation"
-                value={passwordConfirmation}
-                onChange={(e) => setPasswordConfirmation(e.target.value)}
-            />
-            <button type="submit">Submit</button>
-        </form>
+        <>
+            <Header as='h2' color='teal' textAlign='center'>
+                Sign-up for an account
+            </Header>
+            <Form onSubmit={handleSubmit}>
+                <Segment stacked>
+                    <Form.Input
+                        fluid
+                        icon='user'
+                        iconPosition='left'
+                        placeholder='Username'
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                    <Form.Input
+                        fluid
+                        icon='lock'
+                        iconPosition='left'
+                        placeholder='Password'
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <Form.Input
+                        fluid
+                        icon='lock'
+                        iconPosition='left'
+                        placeholder='Password'
+                        type="password"
+                        id="password_confirmation"
+                        value={passwordConfirmation}
+                        onChange={(e) => setPasswordConfirmation(e.target.value)}
+                    />
+                    <Button color='teal' fluid type="submit">Submit</Button>
+                </Segment>
+            </Form>
+        </>
     );
 
 }

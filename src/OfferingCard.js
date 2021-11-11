@@ -1,3 +1,4 @@
+import { Segment } from "semantic-ui-react";
 
 
 function OfferingCard({ offering, marketplace, issueRequest, setIssueRequest }) {
@@ -50,7 +51,7 @@ function OfferingCard({ offering, marketplace, issueRequest, setIssueRequest }) 
 
 
     return (
-        <div className="offering_card" >
+        <Segment >
             <h5>{offering.name}</h5>
             <h6>{offering.user.username}</h6>
             <div>
@@ -62,7 +63,7 @@ function OfferingCard({ offering, marketplace, issueRequest, setIssueRequest }) 
                 {offering.less_than_truckload ? <div>Partial Truckload Available</div> : null}
                 {posted()}
             </div>
-        </div>
+        </Segment>
     )
 };
 

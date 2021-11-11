@@ -1,5 +1,4 @@
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import { Modal, Button, Form, Grid, Header, Message, Segmant, Checkbox } from "semantic-ui-react";
 import { useEffect, useState } from 'react';
 import OfferingCard from './OfferingCard';
 
@@ -54,58 +53,60 @@ function MyOfferings({ user, marketplace, setUser, issueRequest, setIssueRequest
             </Button>
 
             <Modal
-                show={show}
-                onHide={handleClose}
-                backdrop="static"
-                keyboard={false}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
+                dimmer={show ? "blurring" : undefined}
+                open={show ? "OPEN_MODAL" : false}
+                onClose={() => setShow(false)}
                 centered
             >
                 <Modal.Header>
-                    <Modal.Title id="contained-modal-title-vcenter" >New offering:</Modal.Title>
+                    New offering:
                 </Modal.Header>
-                <Modal.Body>
-                    <div>
-                        <form onSubmit={handleSubmit}>
+                <Modal.Content>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Field>
                             <label>
                                 Offering name:
-                                <input type="text" name="name" value={offering.name} onChange={handleChange} />
+                                <Form.Input type="text" name="name" value={offering.name} onChange={handleChange} />
                             </label>
-                            <label>
-                                Less than truckload (LTL)?:
-                                <input type="checkbox" name="less_than_truckload" onChange={handleChange} />
-                            </label>
-                            <label>
-                                Full truckload (FTL)?:
-                                <input type="checkbox" name="full_truckload" onChange={handleChange} />
-                            </label>
+                        </Form.Field>
+                        <Form.Field>
+                            Less than truckload (LTL)?:
+                            <Checkbox type="checkbox" name="less_than_truckload" onChange={handleChange} />
+                        </Form.Field>
+                        <Form.Field>
+                            Full truckload (FTL)?:
+                            <Checkbox type="checkbox" name="full_truckload" onChange={handleChange} />
+                        </Form.Field>
+                        <Form.Field>
                             <label>
                                 Origin region:
-                                <input type="text" name="origin" value={offering.origin} onChange={handleChange} />
+                                <Form.Input type="text" name="origin" value={offering.origin} onChange={handleChange} />
                             </label>
+                        </Form.Field>
+                        <Form.Field>
                             <label>
                                 Origin date:
-                                <input type="text" name="origin_date" value={offering.origin_date} onChange={handleChange} />
+                                <Form.Input type="text" name="origin_date" value={offering.origin_date} onChange={handleChange} />
                             </label>
+                        </Form.Field>
+                        <Form.Field>
                             <label>
                                 Destination region:
-                                <input type="text" name="destination" value={offering.destination} onChange={handleChange} />
+                                <Form.Input type="text" name="destination" value={offering.destination} onChange={handleChange} />
                             </label>
+                        </Form.Field>
+                        <Form.Field>
                             <label>
                                 Destination date:
-                                <input type="text" name="destination_date" value={offering.destination_date} onChange={handleChange} />
+                                <Form.Input type="text" name="destination_date" value={offering.destination_date} onChange={handleChange} />
                             </label>
-
-                            <input type="submit" value="Create new offering" />
-                        </form>
-                    </div>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                </Modal.Footer>
+                        </Form.Field>
+                        <Form.Input type="submit" value="Create new offering" />
+                    </Form>
+                </Modal.Content>
+                <Modal.Actions>
+                <Button type="submit" value="Create new offering" color='teal' >Submit Offering</Button>
+                </Modal.Actions>
             </Modal>
             <div>
                 <h3>Your offerings</h3>

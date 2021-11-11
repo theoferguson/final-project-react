@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Form, Checkbox, Button } from 'semantic-ui-react'
+
 
 function Settings({ user, setUser }) {
     const [settings, setSettings] = useState({});
@@ -37,40 +39,51 @@ function Settings({ user, setUser }) {
 
 
     return (
-        <div className="settings" >
-            <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
+            <Form.Field>
                 <label>
                     Name:
                     <input type="text" name="name" value={settings.name ? settings.name : ""} onChange={handleChange} />
                 </label>
+                </Form.Field>
+                <Form.Field>
                 <label>
                     Email:
                     <input type="text" name="email" value={settings.email ? settings.email : ""} onChange={handleChange} />
                 </label>
+                </Form.Field>
+                <Form.Field>
                 <label>
                     Profile Picture:
                     <input type="text" name="picture" value={settings.picture ? settings.picture : ""} onChange={handleChange} />
                 </label>
+                </Form.Field>
+                <Form.Field>
                 <label>
                     Company:
                     <input type="text" name="company" value={settings.company ? settings.company : ""} onChange={handleChange} />
                 </label>
+                </Form.Field>
+                <Form.Field>
                 <label>
                     Capacity Provider?:
-                    <input type="checkbox" name="capacity_provider" value={user.capacity_provider ? user.capacity_provider : ""} onChange={handleChange} />
+                    <Checkbox name="capacity_provider" value={user.capacity_provider ? user.capacity_provider : ""} onChange={handleChange} />
                 </label>
+                </Form.Field>
+                <Form.Field>
                 <label>
                     Main Location:
                     <input type="text" name="location" value={settings.location ? settings.location : ""} onChange={handleChange} />
                 </label>
+                </Form.Field>
+                <Form.Field>
                 <label>
                     Main Industry:
                     <input type="text" name="industry" value={settings.industry ? settings.industry : ""} onChange={handleChange} />
                 </label>
-
-                <input type="submit" value="Save Settings" />
-            </form>
-        </div>
+                </Form.Field>
+                <Button type="submit">Save Settings</Button>
+            </Form>
     )
 
 };

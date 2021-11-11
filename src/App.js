@@ -4,6 +4,7 @@ import Login from './Login';
 import Navbar from './Navbar';
 import SignUp from './SignUp';
 import { BrowserRouter as Router } from "react-router-dom";
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -20,11 +21,11 @@ function App() {
 
   useEffect(() => {
     fetch("/posts")
-        .then((r) => r.json())
-        .then((json) => {
-            setMarketplace(json)
-        })
-}, [issueRequest]);
+      .then((r) => r.json())
+      .then((json) => {
+        setMarketplace(json)
+      })
+  }, [issueRequest]);
 
   function onLogin(user) {
     if (user.username) {
@@ -51,22 +52,24 @@ function App() {
   if (user) {
     return (
       <Router>
-        <Navbar 
-        onLogout={onLogout} 
-        user={user} 
-        setUser={setUser} 
-        marketplace={marketplace} 
-        issueRequest={issueRequest} 
-        setIssueRequest={setIssueRequest}
+        <Navbar
+          onLogout={onLogout}
+          user={user}
+          setUser={setUser}
+          marketplace={marketplace}
+          issueRequest={issueRequest}
+          setIssueRequest={setIssueRequest}
         />
       </Router>
     );
   } else {
     return (
-      <>
-        <Login onLogin={onLogin} />
-        <SignUp onSignUp={onSignUp} />
-      </>
+      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Login onLogin={onLogin} />
+          <SignUp onSignUp={onSignUp} />
+        </Grid.Column>
+      </Grid>
     );
   }
 }

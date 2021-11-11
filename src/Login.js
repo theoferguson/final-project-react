@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 function Login({ onLogin }) {
     const [username, setUsername] = useState("");
@@ -18,19 +19,34 @@ function Login({ onLogin }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-            />
-            <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button type="submit">Login</button>
-        </form>
+        <>
+            <Header as='h2' color='teal' textAlign='center'>
+                Log-in to an account
+            </Header>
+            <Form onSubmit={handleSubmit}>
+                <Segment stacked>
+                    <Form.Input
+                        fluid
+                        icon='user'
+                        iconPosition='left'
+                        placeholder='Username'
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                    <Form.Input
+                        fluid
+                        icon='lock'
+                        iconPosition='left'
+                        placeholder='Password'
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <Button color='teal' fluid type="submit">Login</Button>
+                </Segment>
+            </Form>
+        </>
     );
 }
 
