@@ -82,7 +82,7 @@ function Settings({ user, setUser }) {
                     <input type="text" name="industry" value={settings.industry ? settings.industry : ""} onChange={handleChange} />
                 </label>
                 </Form.Field>
-                <Button type="submit">Save Settings</Button>
+                <Button basic fluid color='teal' type="submit">Save Settings</Button>
             </Form>
     )
 

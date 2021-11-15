@@ -53,7 +53,7 @@ function Navbar({ onLogout, user, setUser, marketplace, setIssueRequest, issueRe
                     <Route path="/about" element={<AboutUs />} />
                     <Route path="/marketplace" element={<Marketplace marketplace={marketplace} user={user} />} />
                     <Route path="/userpage" element={<UserPage user={user} setUser={setUser} marketplace={marketplace} issueRequest={issueRequest} setIssueRequest={setIssueRequest} />} />
-                    <Route path="/" element={<UserPage user={user} setUser={setUser} marketplace={marketplace} />} />
+                    <Route path="/" element={<UserPage user={user} setUser={setUser} marketplace={marketplace} issueRequest={issueRequest} setIssueRequest={setIssueRequest} />} />
                 </Routes>
             </Segment>
         </div>

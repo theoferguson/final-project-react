@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Header, Segment } from 'semantic-ui-react'
 
 function SignUp({ onSignUp }) {
     const [username, setUsername] = useState("");

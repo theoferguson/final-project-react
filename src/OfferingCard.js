@@ -1,4 +1,4 @@
-import { Segment } from "semantic-ui-react";
+import { Segment, Button, Card } from "semantic-ui-react";
 
 
 function OfferingCard({ offering, marketplace, issueRequest, setIssueRequest }) {
@@ -35,35 +35,53 @@ function OfferingCard({ offering, marketplace, issueRequest, setIssueRequest }) 
         if (marketplace.some((post) => post.offering.id === offering.id)) {
             return (
                 <>
-                    <div>Posted to marketplace</div><button className="post_button" onClick={handleRemovePost} >Remove from marketplace</button>
+                    <Card.Content>Posted to marketplace</Card.Content><Button className="post_button" onClick={handleRemovePost} basic fluid color='red'>Remove from Marketplace</Button>
                 </>
             )
         } else if (offering.user.email) {
             return (
-                <button className="post_button" onClick={handlePost} >Post offering</button>
+                <Button basic fluid color='teal' className="post_button" onClick={handlePost} >Post offering</Button>
             )
         } else {
             return (
-                <div>Update valid email to post to marketplace</div>
+                <Card.Content>Update valid email to post to marketplace</Card.Content>
             )
+        }
+    }
+
+    function removeOffering() {
+        if (marketplace.some((post) => post.offering.id === offering.id)) {
+            handleRemovePost()
+            fetch(`/offerings/${offering.id}`, {
+                method: 'DELETE'
+            }).then(setIssueRequest(!issueRequest))
+        } else {
+            fetch(`/offerings/${offering.id}`, {
+                method: 'DELETE'
+            }).then(setIssueRequest(!issueRequest))
         }
     }
 
 
     return (
-        <Segment >
-            <h5>{offering.name}</h5>
-            <h6>{offering.user.username}</h6>
-            <div>
-                <div>{offering.destination}</div>
-                <div>{offering.origin}</div>
-                <div>{offering.destination_date}</div>
-                <div>{offering.origin_date}</div>
-                {offering.full_truckload ? <div>Full Truckload Available</div> : null}
-                {offering.less_than_truckload ? <div>Partial Truckload Available</div> : null}
+        <Card >
+            <Card.Content>
+                <Card.Header>{offering.name}</Card.Header>
+                <Card.Meta>{offering.user.username}</Card.Meta>
+                <Card.Description>
+                    <div>{offering.destination}</div>
+                    <div>{offering.origin}</div>
+                    <div>{offering.destination_date}</div>
+                    <div>{offering.origin_date}</div>
+                    {offering.full_truckload ? <div>Full Truckload Available</div> : null}
+                    {offering.less_than_truckload ? <div>Partial Truckload Available</div> : null}
+                </Card.Description>
+            </Card.Content>
+            <Card.Content>
                 {posted()}
-            </div>
-        </Segment>
+                <Button onClick={() => removeOffering()} basic fluid color='red'>Delete Offering</Button>
+            </Card.Content>
+        </Card>
     )
 };
 
