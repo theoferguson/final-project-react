@@ -43,46 +43,46 @@ function Settings({ user, setUser }) {
             <Form.Field>
                 <label>
                     Name:
-                    <input type="text" name="name" value={settings.name ? settings.name : ""} onChange={handleChange} />
+                    <input type="text" name="name" value={settings.name ? settings.name : user.name} onChange={handleChange} />
                 </label>
                 </Form.Field>
                 <Form.Field>
                 <label>
                     Email:
-                    <input type="text" name="email" value={settings.email ? settings.email : ""} onChange={handleChange} />
+                    <input type="text" name="email" value={settings.email ? settings.email : user.email} onChange={handleChange} />
                 </label>
                 </Form.Field>
                 <Form.Field>
                 <label>
                     Profile Picture:
-                    <input type="text" name="picture" value={settings.picture ? settings.picture : ""} onChange={handleChange} />
+                    <input type="text" name="picture" value={settings.picture ? settings.picture : user.picture} onChange={handleChange} />
                 </label>
                 </Form.Field>
                 <Form.Field>
                 <label>
                     Company:
-                    <input type="text" name="company" value={settings.company ? settings.company : ""} onChange={handleChange} />
+                    <input type="text" name="company" value={settings.company ? settings.company : user.company} onChange={handleChange} />
                 </label>
                 </Form.Field>
                 <Form.Field>
                 <label>
                     Capacity Provider?:
-                    <Checkbox name="capacity_provider" value={user.capacity_provider ? user.capacity_provider : ""} onChange={handleChange} />
+                    <Checkbox name="capacity_provider" value={user.capacity_provider ? user.capacity_provider : user.capacity_provider} onChange={handleChange} />
                 </label>
                 </Form.Field>
                 <Form.Field>
                 <label>
                     Main Location:
-                    <input type="text" name="location" value={settings.location ? settings.location : ""} onChange={handleChange} />
+                    <input type="text" name="location" value={settings.location ? settings.location : user.location} onChange={handleChange} />
                 </label>
                 </Form.Field>
                 <Form.Field>
                 <label>
                     Main Industry:
-                    <input type="text" name="industry" value={settings.industry ? settings.industry : ""} onChange={handleChange} />
+                    <input type="text" name="industry" value={settings.industry ? settings.industry : user.industry} onChange={handleChange} />
                 </label>
                 </Form.Field>
-                <Button basic fluid color='teal' type="submit">Save Settings</Button>
+                <Button disabled={settings === {} ? false : true} basic fluid color='teal' type="submit">Save Settings</Button>
             </Form>
     )
 

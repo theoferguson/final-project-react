@@ -1,4 +1,4 @@
-import { Modal, Button, Form, Dropdown, Checkbox } from "semantic-ui-react";
+import { Modal, Button, Form, Dropdown, Segment } from "semantic-ui-react";
 import { useEffect, useState } from 'react';
 import OfferingCard from './OfferingCard';
 import { City } from 'country-state-city';
@@ -92,11 +92,11 @@ function MyOfferings({ user, marketplace, setUser, issueRequest, setIssueRequest
                             </label>
                         </Form.Field>
                         <Form.Field>
-                            <label for='less_than_truckload' >Less than truckload (LTL)?</label>
+                            <label htmlFor='less_than_truckload' >Less than truckload (LTL)?</label>
                             <input type='checkbox' id="less_than_truckload" name='less_than_truckload' value={offering.less_than_truckload} onChange={handleChange} />
                         </Form.Field>
                         <Form.Field>
-                            <label for='full_truckload' >Full truckload (FTL)?</label>
+                            <label htmlFor='full_truckload' >Full truckload (FTL)?</label>
                             <input type='checkbox' id="full_truckload" name='full_truckload' value={offering.full_truckload} onChange={handleChange} />
                         </Form.Field>
                         <Form.Field>
@@ -145,7 +145,7 @@ function MyOfferings({ user, marketplace, setUser, issueRequest, setIssueRequest
                     </Form>
                 </Modal.Content>
             </Modal>
-            <div>
+            <Segment>
                 <h3>Your Offerings</h3>
                 {allOfferings.map((offering) => {
                     return (
@@ -160,7 +160,7 @@ function MyOfferings({ user, marketplace, setUser, issueRequest, setIssueRequest
                         />
                     )
                 })}
-            </div>
+            </Segment>
         </>
     )
 };
