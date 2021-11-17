@@ -5,7 +5,7 @@ import NewsScroll from "./NewsScroll";
 import { Grid } from "semantic-ui-react";
 import { useEffect, useState } from "react";
 
-function Marketplace({ marketplace, user }) {
+function Marketplace({ marketplace, user, issueRequest, setIssueRequest }) {
     const [category, setCategory] = useState({})
 
     function handleFilter(e, {content}='' ) {
@@ -35,7 +35,7 @@ function Marketplace({ marketplace, user }) {
                     <Categories marketplace={marketplace} handleFilter={handleFilter} />
                 </Grid.Column>
                 <Grid.Column width={10}>
-                    <Listings marketplace={marketplace} user={user} category={category} />
+                    <Listings marketplace={marketplace} user={user} category={category} issueRequest={issueRequest} setIssueRequest={setIssueRequest}/>
                 </Grid.Column>
             </Grid.Row>
         </Grid>

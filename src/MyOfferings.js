@@ -48,7 +48,6 @@ function MyOfferings({ user, marketplace, setUser, issueRequest, setIssueRequest
     };
 
     function handleChange(event) {
-        // console.log(event.target.parentElement)
         if (event.target.id === "less_than_truckload" || event.target.id === "full_truckload") {
             setOffering({ ...offering, [event.target.name]: event.target.checked })
         } else if (event._reactName === "onClick") {

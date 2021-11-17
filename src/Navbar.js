@@ -8,6 +8,7 @@ import Marketplace from "./Marketplace";
 import UserPage from "./UserPage";
 import { Menu, Segment } from "semantic-ui-react";
 import { useState } from "react";
+import Messages from "./Messages";
 
 function Navbar({ onLogout, user, setUser, marketplace, setIssueRequest, issueRequest }) {
     const [activeItem, setActiveItem] = useState({ activeItem: 'userpage' })
@@ -45,13 +46,20 @@ function Navbar({ onLogout, user, setUser, marketplace, setIssueRequest, issueRe
                     />
                 </Link>
                 <Menu.Menu position='right'>
+                    <Link className="navigation" to="/messages">
+                        <Menu.Item name="Messages"
+                            active={activeItem === 'messages'}
+                            onClick={handleItemClick}
+                        />
+                    </Link>
                     <Menu.Item className="navigation" onClick={handleLogout} name='Logout' />
                 </Menu.Menu>
             </Menu>
             <Segment>
                 <Routes>
+                    <Route path="/messages" element={<Messages />} />
                     <Route path="/about" element={<AboutUs />} />
-                    <Route path="/marketplace" element={<Marketplace marketplace={marketplace} user={user} />} />
+                    <Route path="/marketplace" element={<Marketplace marketplace={marketplace} user={user} issueRequest={issueRequest} setIssueRequest={setIssueRequest} />} />
                     <Route path="/userpage" element={<UserPage user={user} setUser={setUser} marketplace={marketplace} issueRequest={issueRequest} setIssueRequest={setIssueRequest} />} />
                     <Route path="/" element={<UserPage user={user} setUser={setUser} marketplace={marketplace} issueRequest={issueRequest} setIssueRequest={setIssueRequest} />} />
                 </Routes>
