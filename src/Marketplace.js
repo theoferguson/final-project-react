@@ -1,9 +1,9 @@
 import Categories from "./Categories";
-import Filter from "./Filter";
+// import Search from "./Search";
 import Listings from "./Listings";
-import NewsScroll from "./NewsScroll";
+// import NewsScroll from "./NewsScroll";
 import { Grid } from "semantic-ui-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function Marketplace({ marketplace, user, issueRequest, setIssueRequest }) {
     const [category, setCategory] = useState({})
@@ -18,23 +18,19 @@ function Marketplace({ marketplace, user, issueRequest, setIssueRequest }) {
         }
     };
 
-    // useEffect(() => {
-    //     console.log(category)
-    // }, [category]);
-
     return (
         <Grid celled>
             <Grid.Row>
-                <Grid.Column>
+                {/* <Grid.Column>
                     <NewsScroll />
-                </Grid.Column>
+                </Grid.Column> */}
             </Grid.Row>
             <Grid.Row>
-                <Grid.Column width={6}>
-                    <Filter />
+                <Grid.Column width={5}>
+                    {/* <Search /> */}
                     <Categories marketplace={marketplace} handleFilter={handleFilter} />
                 </Grid.Column>
-                <Grid.Column width={10}>
+                <Grid.Column width={8}>
                     <Listings marketplace={marketplace} user={user} category={category} issueRequest={issueRequest} setIssueRequest={setIssueRequest}/>
                 </Grid.Column>
             </Grid.Row>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Header, Segment } from 'semantic-ui-react'
 
 function Login({ onLogin }) {
     const [username, setUsername] = useState("");
@@ -20,6 +20,9 @@ function Login({ onLogin }) {
 
     return (
         <>
+            <Header as='h1' color='teal' textAlign='center'>
+                TRUCKING EXCHANGE NETWORK
+            </Header>
             <Header as='h2' color='teal' textAlign='center'>
                 Log-in to an account
             </Header>

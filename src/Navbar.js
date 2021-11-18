@@ -26,32 +26,26 @@ function Navbar({ onLogout, user, setUser, marketplace, setIssueRequest, issueRe
     return (
         <div>
             <Menu pointing secondary>
-                <Link className="navigation" to="/userpage">
-                    <Menu.Item
+                    <Menu.Item as={Link} className="navigation" to="/userpage"
                         name="User Page"
                         active={activeItem === 'userpage'}
                         onClick={handleItemClick}
                     />
-                </Link>
-                <Link className="navigation" to="/marketplace">
-                    <Menu.Item name="Marketplace"
+                    <Menu.Item as={Link} name="Marketplace" className="navigation" to="/marketplace"
                         active={activeItem === 'marketplace'}
                         onClick={handleItemClick}
                     />
-                </Link>
-                <Link className="navigation" to="/about">
-                    <Menu.Item name="About Us"
+                    <Menu.Item as={Link} name="About Us" className="navigation" to="/about"
                         active={activeItem === 'about'}
                         onClick={handleItemClick}
                     />
-                </Link>
                 <Menu.Menu position='right'>
-                    <Link className="navigation" to="/messages">
-                        <Menu.Item name="Messages"
-                            active={activeItem === 'messages'}
-                            onClick={handleItemClick}
-                        />
-                    </Link>
+                    <Menu.Item as={Link} name="Messages" className="navigation" to="/messages"
+                        active={activeItem === 'messages'}
+                        onClick={handleItemClick}>
+                        {user.messages.length !== 0 ? <i aria-hidden="true" className="red envelope square icon" ></i> : null}
+                        Messages
+                    </Menu.Item>
                     <Menu.Item className="navigation" onClick={handleLogout} name='Logout' />
                 </Menu.Menu>
             </Menu>
@@ -64,7 +58,7 @@ function Navbar({ onLogout, user, setUser, marketplace, setIssueRequest, issueRe
                     <Route path="/" element={<UserPage user={user} setUser={setUser} marketplace={marketplace} issueRequest={issueRequest} setIssueRequest={setIssueRequest} />} />
                 </Routes>
             </Segment>
-        </div>
+        </div >
     );
 }
 

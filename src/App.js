@@ -4,7 +4,7 @@ import Login from './Login';
 import Navbar from './Navbar';
 import SignUp from './SignUp';
 import { BrowserRouter as Router } from "react-router-dom";
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 function App() {
   const [user, setUser] = useState(null);

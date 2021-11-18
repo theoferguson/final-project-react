@@ -1,8 +1,7 @@
-import { Segment, Button, Card } from "semantic-ui-react";
+import { Button, Card } from "semantic-ui-react";
 
 
 function OfferingCard({ offering, marketplace, issueRequest, setIssueRequest }) {
-
 
     function handlePost() {
         console.log(offering)
@@ -17,7 +16,7 @@ function OfferingCard({ offering, marketplace, issueRequest, setIssueRequest }) 
         })
             .then((r) => r.json())
             .then((json) => {
-                console.log(json)
+                // console.log(json)
                 setIssueRequest(!issueRequest)
             })
     };
@@ -69,12 +68,12 @@ function OfferingCard({ offering, marketplace, issueRequest, setIssueRequest }) 
                 <Card.Header>{offering.name}</Card.Header>
                 <Card.Meta>{offering.user.username}</Card.Meta>
                 <Card.Description>
-                    <div>{offering.destination}</div>
-                    <div>{offering.origin}</div>
-                    <div>{offering.destination_date}</div>
-                    <div>{offering.origin_date}</div>
-                    {offering.full_truckload ? <div>Full Truckload Available</div> : null}
-                    {offering.less_than_truckload ? <div>Partial Truckload Available</div> : null}
+                    <div><strong>Destination:</strong> {offering.destination}</div>
+                    <div><strong>Origin:</strong> {offering.origin}</div>
+                    <div><strong>Delivery Date:</strong> {offering.destination_date.slice(0, 10)}</div>
+                    <div><strong>Departure Date:</strong> {offering.origin_date.slice(0, 10)}</div>
+                    {offering.full_truckload ? <div><strong>Full Truckload Available</strong></div> : null}
+                    {offering.less_than_truckload ? <div><strong>Partial Truckload Available</strong></div> : null}
                 </Card.Description>
             </Card.Content>
             <Card.Content>

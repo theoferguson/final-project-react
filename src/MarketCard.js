@@ -1,5 +1,5 @@
 import { Card, Button, Modal, Form } from "semantic-ui-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function MarketCard({ post, user, issueRequest, setIssueRequest }) {
     const [open, setOpen] = useState(false)
@@ -10,10 +10,6 @@ function MarketCard({ post, user, issueRequest, setIssueRequest }) {
     function handleChange(e) {
         setMessage({ user_id: postUserId, post_id: post.id, message: e.target.value })
     };
-
-    // useEffect(() => {
-    //     console.log(message);
-    // }, [message]);
 
     function handleSubmit(e) {
         console.log(message)
@@ -42,13 +38,12 @@ function MarketCard({ post, user, issueRequest, setIssueRequest }) {
                 <Card.Header>{post.offering.name}</Card.Header>
                 <Card.Meta >{post.offering.user.username}</Card.Meta>
                 <Card.Description>
-                    <div>{post.offering.asking_price}</div>
-                    <div>{post.offering.origin}</div>
-                    <div>{post.offering.origin_date}</div>
-                    <div>{post.offering.destination}</div>
-                    <div>{post.offering.destination_date}</div>
-                    {post.offering.full_truckload ? <div>Full Truckload Available</div> : null}
-                    {post.offering.less_than_truckload ? <div>Partial Truckload Available</div> : null}
+                    <div><strong>Destination:</strong> {post.offering.destination}</div>
+                    <div><strong>Origin:</strong> {post.offering.origin}</div>
+                    <div><strong>Delivery Date:</strong> {post.offering.destination_date.slice(0, 10)}</div>
+                    <div><strong>Departure Date:</strong> {post.offering.origin_date.slice(0, 10)}</div>
+                    {post.offering.full_truckload ? <div><strong>Full Truckload Available</strong></div> : null}
+                    {post.offering.less_than_truckload ? <div><strong>Partial Truckload Available</strong></div> : null}
                 </Card.Description>
                 {postUserId === user.id ? null :
                     <Card.Content extra>
